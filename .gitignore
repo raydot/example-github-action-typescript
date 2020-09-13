@@ -1,0 +1,19 @@
+# Ignore any generated TypeScript -> JavaScript files
+.github/actions/**/.js
+
+#logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency Directories
+node_modules
+
+# Typescript v1 declaration files
+typings/
+
+# Optional NPM cache directory
+.npm
+
+# Option esline cache
+.eslintcache
