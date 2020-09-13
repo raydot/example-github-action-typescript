@@ -8,6 +8,7 @@ npm-debug.log*
 
 # Dependency Directories
 node_modules
+package-lock.json
 
 # Typescript v1 declaration files
 typings/
