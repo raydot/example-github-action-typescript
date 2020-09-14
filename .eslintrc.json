@@ -18,10 +18,10 @@
         "tabWidth": 2,
         "semi": false
       }
-    ],
-    // octokit/rest requires parameters that are not in camelcase
-    "camelcase": "off",
-    "@typescript-eslint/camelcase": ["error", { "properties": never }]
+    ]
+    // octokit/rest requires parameters that are not in camelCase
+    // "camelcase": "off",
+    // "@typescript-eslint/camelcase": ["error", { "properties": "never" }]
   },
   "env": {
     "node": true,
