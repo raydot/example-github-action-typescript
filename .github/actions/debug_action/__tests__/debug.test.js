@@ -24,6 +24,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(require("@actions/core"));
 const debug_1 = __importDefault(require("../debug"));
+beforeEach(() => {
+    jest.resetModules();
+    process.env['INPUT_AMAZING-CREATURE'] = 'person';
+});
+afterEach(() => {
+    delete process.env['INPUT_AMAZING-CREATURE'];
+});
+describe('debug action debug messages', () => {
+    it('outputs a debug message', async () => {
+        const debugMock = jest.spyOn(core, 'debug');
+        await debug_1.default();
+        expect(debugMock).toHaveBeenCalledWith('👋 Hello! You are an amazing person! 🙌');
+    });
+});
+// import * as core from '@actions/core'
+// import run from '../debug'
+// import fs from 'fs'
+// import yaml from 'js-yaml'
+// beforeEach(() => {
+//   // console.log('dn', __dirname)
+//   jest.resetModules()
+//   // process.env["INPUT_AMAZING-CREATURE"] = "person"; // original call
+//   const doc = yaml.safeLoad(fs.readFileSync('../action.yml', 'utf8'))
+//   Object.keys(doc.inputs).forEach((name) => {
+//     const envVar = `INPUT_${name.replace(/ /g, '_').toUpperCase()}`
+//     process.env[envVar] = doc.inputs[name]['default']
+//   })
+// })
+// afterEach(() => {
+//   //delete process.env["INPUT_AMAZING-CREATURE"];
+//   const doc = yaml.safeLoad(fs.readFileSync('../action.yml', 'utf-8'))
+//   Object.keys(doc.inputs).forEach((name) => {
+//     const envVar = `INPUT_${name.replace(/ /g, '_').toUpperCase()}`
+//     delete process.env[envVar]
+//   })
+// })
 describe('debug action debug messages', () => {
     it('outputs a debug message', async () => {
         const debugMock = jest.spyOn(core, 'debug');

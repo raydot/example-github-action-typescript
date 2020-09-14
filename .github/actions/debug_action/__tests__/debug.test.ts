@@ -5,22 +5,21 @@ import yaml from 'js-yaml'
 
 beforeEach(() => {
   jest.resetModules()
-  //process.env["INPUT_AMAZING-CREATURE"] = "person";
   const doc = yaml.safeLoad(fs.readFileSync(__dirname + '/../action.yml', 'utf8'))
-  Object.keys(doc.inputs).forEach((name) => {
+  Object.keys(doc.inputs).forEach(name => {
     const envVar = `INPUT_${name.replace(/ /g, '_').toUpperCase()}`
     process.env[envVar] = doc.inputs[name]['default']
   })
 })
 
 afterEach(() => {
-  //delete process.env["INPUT_AMAZING-CREATURE"];
-  const doc = yaml.safeLoad(fs.readFileSync(__dirname + '/../action.yml', 'utf-8'))
-  Object.keys(doc.inputs).forEach((name) => {
+  const doc = yaml.safeLoad(fs.readFileSync(__dirname + '/../action.yml', 'utf8'))
+  Object.keys(doc.inputs).forEach(name => {
     const envVar = `INPUT_${name.replace(/ /g, '_').toUpperCase()}`
     delete process.env[envVar]
   })
 })
+
 describe('debug action debug messages', () => {
   it('outputs a debug message', async () => {
     const debugMock = jest.spyOn(core, 'debug')
